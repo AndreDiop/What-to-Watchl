@@ -32,18 +32,26 @@ connection.connect(function (err) {
 app.get("/", (req, res) => {
   res.send("all my movies go here");
 });
-app.get("/movies/:id", (req, res) => {
+app.get("/movies/new", (req, res) => {
   res.send("single movie goes here");
 });
-app.get("/movies/:id/edit", (req, res) => {
+app.get("/movies/:id", (req, res) => {
   res.send("form to update movie here");
 });
-app.get("/movies/new", (req, res) => {
+app.get("/movies/:id/edit", (req, res) => {
   res.send("aform to create new movie here");
 });
 
-
 // API Routes
+app.post("/api/movies", (req, res) => {
+  res.send("after creating a new movie in the DB, I will return a response");
+});
+app.put("/api/movies/:id", (req, res) => {
+  res.send("after updating a movie by ID, I will return a response");
+});
+app.delete("/api/movies/:id", (req, res) => {
+  res.send("after deleting a movie by id, I will return a response");
+});
 
 app.listen(PORT, function () {
   // Log (server-side) when our server has started
