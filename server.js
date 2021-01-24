@@ -39,7 +39,7 @@ app.get("/movies/:id", (req, res) => {
   res.send("form to update movie here");
 });
 app.get("/movies/:id/edit", (req, res) => {
-  res.send("aform to create new movie here");
+  res.send("form to create new movie here");
 });
 
 // API Routes
