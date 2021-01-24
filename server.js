@@ -30,9 +30,15 @@ connection.connect(function (err) {
 
 // view routes
 app.get("/", (req, res) => {
-  connection.query()
-  res.send("all my movies go here");
+  connection.query("SELECT * FROM movies;", function (err, data) {
+    if (err) {
+      return res.status(500).end();
+    }
+    res.render("index", { movies: data });
+  });
 });
+// * Render the main `index.handlebars` when the `'/'` get route is hit with all of the movies from the movies table.
+
 app.get("/movies/new", (req, res) => {
   res.send("single movie goes here");
 });
