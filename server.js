@@ -30,6 +30,7 @@ connection.connect(function (err) {
 
 // view routes
 app.get("/", (req, res) => {
+  connection.query()
   res.send("all my movies go here");
 });
 app.get("/movies/new", (req, res) => {

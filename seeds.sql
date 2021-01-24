@@ -1,2 +1,16 @@
 INSERT INTO movies (movie) 
-VALUES ("The Big Hit"),("Pulp Fiction"),("Terminator");
+VALUES ("The Big Hit"),("Pulp Fiction"),("Terminator"),
+("Eraser"),
+("Predator"),
+("The Big Lebowski"),
+("Pi"),
+("American Pie"),
+("American Beauty"),
+("Beauty and the Beast"),
+("The Spy Who Loved Me"),
+("Spy Games"),
+("Spy Hard"),
+("Die Hard"),
+("Die Another Day"),
+("Day of the Dead"),
+("Land of The Dead");
