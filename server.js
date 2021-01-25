@@ -37,7 +37,9 @@ app.get("/", (req, res) => {
     res.render("index", { movies: data });
   });
 });
-
+app.get("/movies/new", (req, res) => {
+  res.render("newMovie");
+});
 app.get("/movies/:id", (req, res) => {
   const movieId = req.params.id;
   connection.query(
@@ -64,9 +66,7 @@ app.get("/movies/:id/edit", (req, res) => {
   res.send("form to edit new movie here");
 });
 
-app.get("/movie/new", (req, res) => {
-  res.render("newMovie");
-});
+
 
 // API Routes
 // Create
