@@ -46,16 +46,15 @@ app.get("/movies/:id", (req, res) => {
   connection.query(
     `
   SELECT * FROM movies
-  WHERE movie = ?;`,
+  WHERE id = ?`,
     [movieId],
-    function (err, data) {
-      if (err) {
-        return res.status(500).end();
-      }
+    (err, data) => {
+      // sending back handlebars page and 'id' data from the object
+      res.render("singleMovie", data[0]);
     }
   );
 
-  res.send("single movie goes here");
+  // res.send("single movie goes here");
 });
 app.get("/movies/:id/edit", (req, res) => {
   res.send("form to create new movie here");
