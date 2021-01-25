@@ -17,6 +17,7 @@
       const idToDelete = $(this).attr("data-id");
       $.ajax(`api/movies/${idToDelete}`, { type: "DELETE" }).then((response) => {
         console.log(response);
+        location.reload();
       })
     })
   })

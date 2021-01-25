@@ -34,9 +34,6 @@ app.get("/", (req, res) => {
   var queryString = `SELECT * FROM MOVIES
   `;
   connection.query(queryString, function (err, data) {
-    if (err) {
-      return res.status(500).end();
-    }
     res.render("index", { movies: data });
   });
 });
@@ -82,7 +79,11 @@ app.put("/api/movies/:id", (req, res) => {
 });
 // Delete
 app.delete("/api/movies/:id", (req, res) => {
-  res.send("after deleting a movie by id, I will return a response");
+  const movieId = req.params.id;
+  const queryString = "DELETE FROM movies WHERE id = ?;";
+  connection.query(queryString, [movieId], function (err, result) {
+    res.json(result);
+  });
 });
 
 app.listen(PORT, function () {
