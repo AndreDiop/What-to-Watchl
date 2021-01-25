@@ -64,8 +64,8 @@ app.get("/movies/:id/edit", (req, res) => {
   res.send("form to edit new movie here");
 });
 
-app.get("/movies/new", (req, res) => {
-  res.send("form to add new movie");
+app.get("/movie/new", (req, res) => {
+  res.render("newMovie");
 });
 
 // API Routes
