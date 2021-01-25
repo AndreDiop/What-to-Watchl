@@ -55,13 +55,15 @@ app.get("/movies/:id", (req, res) => {
   );
 });
 app.get("/movies/:id/edit", (req, res) => {
-  connection.query(
-    `UPDATE movies
-  SET movie = "Go"
-  WHERE id = 10`,
-    [],
-    (err, data) => {}
-  );
+  //  movieId = req.params.id
+  //  movie = req.params.movie
+  // connection.query(
+  //   `UPDATE movies
+  // SET movie = ?
+  // WHERE id = ?`,
+  //   [movie,movieId],
+  //   (err, data) => {}
+  // );
   res.send("form to edit new movie here");
 });
 
