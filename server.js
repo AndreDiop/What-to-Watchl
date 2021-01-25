@@ -29,33 +29,52 @@ connection.connect(function (err) {
 });
 
 // view routes
+
 app.get("/", (req, res) => {
-  connection.query("SELECT * FROM movies;", function (err, data) {
+  var queryString = `SELECT * FROM MOVIES
+  `;
+  connection.query(queryString, function (err, data) {
     if (err) {
       return res.status(500).end();
     }
     res.render("index", { movies: data });
   });
 });
-// * Render the main `index.handlebars` when the `'/'` get route is hit with all of the movies from the movies table.
 
-app.get("/movies/new", (req, res) => {
-  res.send("single movie goes here");
-});
 app.get("/movies/:id", (req, res) => {
-  res.send("form to update movie here");
+  const movieId = req.params.id;
+  connection.query(
+    `
+  SELECT * FROM movies
+  WHERE movie = ?;`,
+    [movieId],
+    function (err, data) {
+      if (err) {
+        return res.status(500).end();
+      }
+    }
+  );
+
+  res.send("single movie goes here");
 });
 app.get("/movies/:id/edit", (req, res) => {
   res.send("form to create new movie here");
 });
 
+app.get("/movies/new", (req, res) => {
+  res.send("form to add new movie");
+});
+
 // API Routes
+// Create
 app.post("/api/movies", (req, res) => {
   res.send("after creating a new movie in the DB, I will return a response");
 });
+// Update
 app.put("/api/movies/:id", (req, res) => {
   res.send("after updating a movie by ID, I will return a response");
 });
+// Delete
 app.delete("/api/movies/:id", (req, res) => {
   res.send("after deleting a movie by id, I will return a response");
 });

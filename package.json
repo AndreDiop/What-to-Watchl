@@ -1,0 +1,29 @@
+{
+  "name": "What-to-Watchl",
+  "version": "1.0.0",
+  "description": "This application help you decide what to watch",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "nodemon": "^2.0.7",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreDiop/What-to-Watchl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreDiop/What-to-Watchl/issues"
+  },
+  "homepage": "https://github.com/AndreDiop/What-to-Watchl#readme"
+}
