@@ -5,6 +5,7 @@
   <li>
     <p>
       {{id}}. {{movie}}
+      <a href="/movies/{{id}}" class="btn btn-link"> View details</a>
 
       <button data-movieid="{{id}}" class="delplan">Delete movie!</button>
     </p>
@@ -52,14 +53,14 @@
     event.preventDefault();
 
     // [name=movie] will find an element with a "name" attribute equal to the string "movie"
-    var newPlan = {
+    var newMovie = {
       movie: $("#createMovie [name=movie]").val().trim()
     };
 
     // Send the POST request.
     $.ajax("/api/movies", {
       type: "POST",
-      data: newPlan
+      data: newMovie
     }).then(
       function() {
         console.log("created new movie");
@@ -76,7 +77,7 @@
     // Get the ID by finding an element with a "name" attribute equal to the string "id"
     var id = $("[name=id]").val().trim();
 
-    var updatedPlan = {
+    var updatedMovie = {
       movie: $("#updateMovie [name=movie]").val().trim()
     };
 

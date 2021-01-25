@@ -53,11 +53,16 @@ app.get("/movies/:id", (req, res) => {
       res.render("singleMovie", data[0]);
     }
   );
-
-  // res.send("single movie goes here");
 });
 app.get("/movies/:id/edit", (req, res) => {
-  res.send("form to create new movie here");
+  connection.query(
+    `UPDATE movies
+  SET movie = "Go"
+  WHERE id = 10`,
+    [],
+    (err, data) => {}
+  );
+  res.send("form to edit new movie here");
 });
 
 app.get("/movies/new", (req, res) => {
