@@ -66,12 +66,14 @@ app.get("/movies/:id/edit", (req, res) => {
   res.send("form to edit new movie here");
 });
 
-
-
 // API Routes
 // Create
 app.post("/api/movies", (req, res) => {
-  res.send("after creating a new movie in the DB, I will return a response");
+  const movie = req.body.movie;
+  const queryString = "INSERT INTO movies (movie) VALUES (?);";
+  connection.query(queryString, [movie], function (err, result) {
+    res.json(result);
+  });
 });
 // Update
 app.put("/api/movies/:id", (req, res) => {
