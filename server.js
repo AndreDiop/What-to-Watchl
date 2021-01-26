@@ -28,7 +28,7 @@ connection.connect(function (err) {
   console.log("connected as id " + connection.threadId);
 });
 
-// view routes
+// View Routes -------------------
 
 app.get("/", (req, res) => {
   var queryString = `SELECT * FROM MOVIES
@@ -64,8 +64,8 @@ app.get("/movies/:id/edit", (req, res) => {
   );
 });
 
-// API Routes
-// Create
+
+// Create API Route ---------------
 app.post("/api/movies", (req, res) => {
   const movie = req.body.movie;
   const queryString = "INSERT INTO movies (movie) VALUES (?);";
@@ -73,7 +73,7 @@ app.post("/api/movies", (req, res) => {
     res.json(result);
   });
 });
-// Update
+// Update API Route --------------
 app.put("/api/movies/:id", (req, res) => {
   const movie = req.body.movie;
   const id = req.params.id;
@@ -81,9 +81,9 @@ app.put("/api/movies/:id", (req, res) => {
   connection.query(queryString, [movie, id], function (err, result) {
     res.json(result);
   });
-  // res.send("after updating a movie by ID, I will return a response");
+
 });
-// Delete
+// Delete API Route ----------------
 app.delete("/api/movies/:id", (req, res) => {
   const movieId = req.params.id;
   const queryString = "DELETE FROM movies WHERE id = ?;";
@@ -93,6 +93,5 @@ app.delete("/api/movies/:id", (req, res) => {
 });
 
 app.listen(PORT, function () {
-  // Log (server-side) when our server has started
   console.log("Server listening on: http://localhost:" + PORT);
 });
