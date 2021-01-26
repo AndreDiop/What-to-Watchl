@@ -54,16 +54,14 @@ app.get("/movies/:id", (req, res) => {
   );
 });
 app.get("/movies/:id/edit", (req, res) => {
-  //  movieId = req.params.id
-  //  movie = req.params.movie
-  // connection.query(
-  //   `UPDATE movies
-  // SET movie = ?
-  // WHERE id = ?`,
-  //   [movie,movieId],
-  //   (err, data) => {}
-  // );
-  res.send("form to edit new movie here");
+  const id = req.params.id;
+  connection.query(
+    "SELECT * FROM movies WHERE id=?",
+    [id],
+    function (err, data) {
+      res.render("editMovie", data[0]);
+    }
+  );
 });
 
 // API Routes
@@ -77,7 +75,13 @@ app.post("/api/movies", (req, res) => {
 });
 // Update
 app.put("/api/movies/:id", (req, res) => {
-  res.send("after updating a movie by ID, I will return a response");
+  const movie = req.body.movie;
+  const id = req.params.id;
+  const queryString = "UPDATE movies SET movie = (?) WHERE id = ?";
+  connection.query(queryString, [movie, id], function (err, result) {
+    res.json(result);
+  });
+  // res.send("after updating a movie by ID, I will return a response");
 });
 // Delete
 app.delete("/api/movies/:id", (req, res) => {

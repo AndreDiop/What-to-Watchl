@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form id="updateMovie">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="movieTitle" value="{{movie}}">
+                </div>
+                <input type="hidden" id="movie-id" value="{{id}}" />
+                <button type="submit" class="btn btn-primary">Update movie to list</button>
+                <a href="/" class="btn btn-link"> Back to movie list</a>
+
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#updateMovie").on("submit", function (e) {
+            e.preventDefault();
+            const movieTitle = $("#movieTitle").val();
+            const movieId = $("#movie-id").val();
+            $.ajax(`/api/movies/${movieId}`, {
+                type: "PUT", data: {
+                    movie: movieTitle
+                }
+            }).then(response => {
+                console.log(response);
+                alert("Movie was added to the watch list!")
+                window.location.href = "/";
+            })
+        })
+    })
+
+</script>
